@@ -1,0 +1,10 @@
+[Unit]
+Description=Disable wakeup on USB
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/wakeup-disable XHC
+
+[Install]
+WantedBy=multi-user.target

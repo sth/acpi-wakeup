@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -eu
+
+DEV="$1"
+if grep -q "^$DEV\\b.*\\*enabled" /proc/acpi/wakeup; then
+	echo $DEV > /proc/acpi/wakeup
+fi
