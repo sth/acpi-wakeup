@@ -2,6 +2,9 @@
 
 set -eu
 
+# See here:
+# https://bbs.archlinux.org/viewtopic.php?id=177203
+
 DEV="$1"
 if grep -q "^$DEV\\b.*\\*enabled" /proc/acpi/wakeup; then
 	echo $DEV > /proc/acpi/wakeup
