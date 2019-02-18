@@ -1,5 +1,5 @@
 [Unit]
-Description=Disable wakeup on USB
+Description=Configure ACPI device wakeup
 
 [Service]
 Type=oneshot
