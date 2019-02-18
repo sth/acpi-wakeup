@@ -1,0 +1,53 @@
+#!/bin/sh
+
+set -eu
+# See here:
+# https://bbs.archlinux.org/viewtopic.php?id=177203
+
+enable() {
+	if grep -q "^$DEV\\b.*\\*disabled" /proc/acpi/wakeup; then
+		echo $DEV > /proc/acpi/wakeup
+	fi
+}
+
+disable() {
+	if grep -q "^$DEV\\b.*\\*enabled" /proc/acpi/wakeup; then
+		echo $DEV > /proc/acpi/wakeup
+	fi
+}
+
+
+# If called without parameters, show current state
+if [ $# = 0 ]; then
+	cat /proc/acpi/wakeup
+	exit 0
+fi
+
+for DEV in "$@"; do
+	case $DEV in
+		-h|--help)
+			echo "usage: $0 [-h] [+DEV ...] [-DEV ...]"
+			echo ""
+			echo "  Without parameters, show current ACPI wakeup status."
+			echo ""
+			echo "  With parameters, enable oder disable ACPI wakeup for the specified"
+			echo "  devices. Device names are given as shown when calling $0 without"
+			echo "  parameters and are prefixed with + or - to set them to enabled or"
+			echo "  disabled:"
+			echo "    +DEV   enable wakeup for DEV"
+			echo "    -DEV   disable wakup for DEV"
+			exit
+			;;
+		-*)
+			disable ${DEV#-}
+			;;
+		+*)
+			enable ${DEV#+}
+			;;
+		*)
+			echo "unrecognized parameter: $DEV" >&2
+			echo "try $0 -h" 
+			exit 1
+			;;
+	esac
+done
