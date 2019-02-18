@@ -44,7 +44,7 @@ in `etc/acpi-wakeup.service´ to enable/disable the desired devices
 and install the service:
 
     sudo cp etc/acpi-wakeup.service /etc/systemd/system/
-	 sudo systemctl enable acpi-wakeup
+    sudo systemctl enable acpi-wakeup
 
 
 ## Installation
@@ -52,11 +52,11 @@ and install the service:
 The script can be installed by simply copying it to a `bin` folder, for
 example:
 
-	 sudo cp acpi-wakeup /usr/local/bin/
+    sudo cp acpi-wakeup /usr/local/bin/
 
 If you want to install the systemd service, copy the service file to a
 place where systemd will find it and enable the service:
 
     sudo cp etc/acpi-wakeup.service /etc/systemd/system/
-	 sudo systemctl enable acpi-wakeup
+    sudo systemctl enable acpi-wakeup
 
