@@ -5,14 +5,14 @@ set -eu
 # https://bbs.archlinux.org/viewtopic.php?id=177203
 
 enable() {
-	if grep -q "^$DEV\\b.*\\*disabled" /proc/acpi/wakeup; then
-		echo $DEV > /proc/acpi/wakeup
+	if grep -q "^$1\\b.*\\*disabled" /proc/acpi/wakeup; then
+		echo $1 > /proc/acpi/wakeup
 	fi
 }
 
 disable() {
-	if grep -q "^$DEV\\b.*\\*enabled" /proc/acpi/wakeup; then
-		echo $DEV > /proc/acpi/wakeup
+	if grep -q "^$1\\b.*\\*enabled" /proc/acpi/wakeup; then
+		echo $1 > /proc/acpi/wakeup
 	fi
 }
 
