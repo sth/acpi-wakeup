@@ -40,7 +40,7 @@ computer is running, a reboot will reset them to their defaults.
 
 The provided minimal systemd service can be used to automatically
 configure the wakeup settings at startup. Edit the `ExecStart` line
-in `etc/acpi-wakeup.service´ to enable/disable the desired devices
+in `etc/acpi-wakeup.service` to enable/disable the desired devices
 and install the service:
 
     sudo cp etc/acpi-wakeup.service /etc/systemd/system/
